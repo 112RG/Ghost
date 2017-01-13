@@ -1,7 +1,7 @@
 module.exports = {
 
 	// This is your Discord personal token
-	token: 'process.env.TOKEN',
+	token: process.env.TOKEN,
 
 	// Prefix on which the bot will be hooked to
 	prefix: '!',
