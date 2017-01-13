@@ -3,7 +3,6 @@ node_modules/
 files/
 stickers/
 .eslintrc.json
-config.js
 db
 
 # Commands people shouldn't have :araragi:
