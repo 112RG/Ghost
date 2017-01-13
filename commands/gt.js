@@ -1,4 +1,4 @@
 exports.run = function(msg, args) {
 	msg.delete()
-	msg.channrgrel.sendMessage("```css\n>" + args.toString().replace(/,/g, ' ') + "```")
+	msg.channel.sendMessage("```css\n>" + args.toString().replace(/,/g, ' ') + "```")
 }
