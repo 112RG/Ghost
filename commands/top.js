@@ -4,9 +4,6 @@ exports.init = function(bot){ kuro = bot }
 
 exports.run = function(msg, args) {
         threadCount = 0;
-        for (var i = 0; i < cpus.length; i++){
-                threadCount =i;
-        }
         msg.edit('', {
                 'embed': {
                         'title': 'Stats',
