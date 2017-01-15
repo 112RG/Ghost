@@ -1,20 +1,20 @@
 exports.run = function(msg, args) {
 	msg.delete()
-	msg.channel.sendMessage('👀').then(msg => {
+	msg.channel.sendMessage(':slight_smile:  :smiley: ').then(msg => {
 		setTimeout(() => {
-			msg.edit('<:eyesFlipped:251594919364395028>').then(msg => {
+			msg.edit(':smile:').then(msg => {
 				setTimeout(() => {
-					msg.edit('👀').then(msg => {
+					msg.edit('smiley').then(msg => {
 						setTimeout(() => {
-							msg.edit('<:eyesFlipped:251594919364395028>').then(msg => {
+							msg.edit(':slight_smile:').then(msg => {
 								setTimeout(() => {
-									msg.edit('👀').then(msg => {
+									msg.edit(':smile:').then(msg => {
 										setTimeout(() => {
-											msg.edit('<:eyesFlipped:251594919364395028>').then(msg => {
+											msg.edit(':smiley:').then(msg => {
 												setTimeout(() => {
 													msg.edit('👀').then(msg => {
 														setTimeout(() => {
-															msg.edit('<:eyesFlipped:251594919364395028>')
+															msg.edit('<3')
 														}, 500)
 													})
 												}, 500)
