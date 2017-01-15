@@ -1,6 +1,6 @@
 exports.run = function(msg, args) {
 	msg.delete()
-	msg.channel.sendMessage(':slight_smile:  :smiley: ').then(msg => {
+	msg.channel.sendMessage(':slight_smile:').then(msg => {
 		setTimeout(() => {
 			msg.edit(':smile:').then(msg => {
 				setTimeout(() => {
@@ -12,9 +12,9 @@ exports.run = function(msg, args) {
 										setTimeout(() => {
 											msg.edit(':smiley:').then(msg => {
 												setTimeout(() => {
-													msg.edit('👀').then(msg => {
+													msg.edit(':heart:').then(msg => {
 														setTimeout(() => {
-															msg.edit('<3')
+															msg.edit(':heartpulse:')
 														}, 500)
 													})
 												}, 500)
