@@ -4,17 +4,9 @@ let disk = require('diskusage');
 exports.init = function(bot){ kuro = bot }
 
 exports.run = function(msg, args) {
-<<<<<<< HEAD
-        let disk_avail = 0;
         let disk_free = 0;
         let disk_total = 0;
         disk.check('/', function(err, info) {
-                disk_avail = info.available;
-=======
-        let disk_free = 0;
-        let disk_total = 0;
-        disk.check('/', function(err, info) {
->>>>>>> kanadeko/master
                 disk_free = info.free;
                 disk_total = info.total;
         });
@@ -31,6 +23,10 @@ exports.run = function(msg, args) {
                                 {'name': 'Memory heapUsed', 'value': `${sizeOf(process.memoryUsage().heapUsed)} / ${sizeOf(os.totalmem())}`, 'inline': true},
                                 {'name': 'Memory heapTotal', 'value': `${sizeOf(process.memoryUsage().heapTotal)} / ${sizeOf(os.totalmem())}`, 'inline': true},
                                 {'name': 'Total Memory Used', 'value': `${sizeOf(os.totalmem()-os.freemem())} / ${sizeOf(os.totalmem())}`, 'inline':true},
+                                {'name': 'Free Disk', 'value': `${sizeOf(disk_free)}`, 'inline': true},
+                                {'name': 'Total Disk', 'value': `${sizeOf(disk_total)}`, 'inline':true},
+                                {'name': 'System Load', 'value': `${os.loadavg()[0].toFixedDown(2)}%`, 'inline': true},
+                                {'name': 'Server Uptime', 'value': `${secondsToString(os.uptime())}`},
                         ],
                         'color': kuro.config.embedColor
                 }
