@@ -8,3 +8,5 @@ db
 # Commands people shouldn't have :araragi:
 commands/user.js
 commands/radio.js
+
+.vscode/settings.json

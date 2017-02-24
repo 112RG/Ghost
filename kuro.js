@@ -26,6 +26,7 @@ kuro.once('ready', () => {
 	kuro.loadCommands()
 
 	kuro.log('Kuro is ready!', 'green')
+
 })
 
 kuro.on('message', function(msg){
