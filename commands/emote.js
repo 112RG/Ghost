@@ -1,14 +1,14 @@
-let kuro
-exports.init = function(bot){ kuro = bot }
+let ghost
+exports.init = function(bot){ ghost = bot }
 
 exports.run = function(msg, args) {
 
     if(args[0] === undefined) return msg.delete()
-    if(!args[0].startsWith('<:')) return kuro.edit(msg, 'Not a valid emote')
+    if(!args[0].startsWith('<:')) return ghost.edit(msg, 'Not a valid emote')
 
     let id = args[0].substring(args[0].lastIndexOf(":") + 1, args[0].lastIndexOf(">"))
-    let emoteInfo = kuro.emojis.get(id);
-    if(!emoteInfo) return kuro.edit(msg, 'No emote with that id')
+    let emoteInfo = ghost.emojis.get(id);
+    if(!emoteInfo) return ghost.edit(msg, 'No emote with that id')
 
     msg.edit({
         "embed": {

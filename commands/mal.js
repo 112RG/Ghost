@@ -1,5 +1,5 @@
-let kuro
-exports.init = function(bot){ kuro = bot }
+let ghost
+exports.init = function(bot){ ghost = bot }
 
 exports.run = function(msg, args) {
 
@@ -9,7 +9,7 @@ exports.run = function(msg, args) {
 	const parseString = require('xml2js').parseString
 	const cheerio = require('cheerio')
 
-	let username = kuro.config.MALusername
+	let username = ghost.config.MALusername
 	if(args.length !== 0) username = args[0]
 
 	request(`https://myanimelist.net/malappinfo.php?&status=all&type=anime&u=${username}`, (err, res, body) => {
@@ -46,7 +46,7 @@ exports.run = function(msg, args) {
 										'title': username + '\'s MyAnimeList Summary',
 										'url': 'https://myanimelist.net/animelist/' + username,
 										'description': description,
-										'color': kuro.config.embedColor,
+										'color': ghost.config.embedColor,
 										'fields': [
 											{ 'name': 'Watching', 'value': result.myanimelist.myinfo[0].user_watching[0], 'inline': true },
 											{ 'name': 'Completed', 'value': result.myanimelist.myinfo[0].user_completed[0], 'inline': true },
@@ -61,7 +61,7 @@ exports.run = function(msg, args) {
 								})
 
 							}catch(e){
-								kuro.error(e)
+								ghost.error(e)
 								msg.delete()
 							}
 						}

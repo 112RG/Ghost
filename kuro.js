@@ -9,30 +9,30 @@ let filesDirectory = __dirname + '/files'
 fs.existsSync(filesDirectory) || fs.mkdirSync(filesDirectory)
 
 // Initializing the ultimate tan
-const kuro = new Discord.Client()
+const ghost = new Discord.Client()
 
 // When ready
-kuro.once('ready', () => {
+ghost.once('ready', () => {
 
 	// Create database if it doesn't exist
 	fs.exists('db', (exists) => exists || fs.writeFile('db', ''))
 
 	// Getting the database ready
-	kuro.db = knex
+	ghost.db = knex
 
 	// Making config available on every module
-	kuro.config = config
+	ghost.config = config
 
-	kuro.loadCommands()
+	ghost.loadCommands()
 
-	kuro.log('Kuro is ready!', 'green')
-	kuro.user.setStatus(dnd)
+	ghost.log('ghost is ready!', 'green')
+	ghost.user.setStatus(dnd)
 })
 
-kuro.on('message', function(msg){
+ghost.on('message', function(msg){
 
 	// Ignore if the message is not ours
-	if (msg.author.id !== kuro.user.id) return
+	if (msg.author.id !== ghost.user.id) return
 
 	// Ignore if the message doesn't start with our prefix
 	if (!msg.content.startsWith(config.prefix)) return
@@ -50,20 +50,20 @@ kuro.on('message', function(msg){
 	// Store the command separately
 	let cmd = tmp[0]
 
-	if(kuro.modules.hasOwnProperty(cmd)) return kuro.modules[cmd].run(msg, args)
+	if(ghost.modules.hasOwnProperty(cmd)) return ghost.modules[cmd].run(msg, args)
 	if(config.commandError.sendToModule === true)
-		return kuro.modules[config.commandError.module][config.commandError.function](msg, cmd)
+		return ghost.modules[config.commandError.module][config.commandError.function](msg, cmd)
 
 	return msg.delete()
 
 })
 
-kuro.on('disconnect', () => { kuro.error('CLIENT: Disconnected!') })
-kuro.on('reconnect', () => { kuro.log('CLIENT: Reconnecting...', 'green') })
+ghost.on('disconnect', () => { ghost.error('CLIENT: Disconnected!') })
+ghost.on('reconnect', () => { ghost.log('CLIENT: Reconnecting...', 'green') })
 
-kuro.loadCommands = function(){
+ghost.loadCommands = function(){
 	
-	kuro.modules = {}
+	ghost.modules = {}
 
 	// Load up all the modules
 	fs.readdirSync('./commands/').forEach(function(file) {
@@ -72,20 +72,20 @@ kuro.loadCommands = function(){
 		delete require.cache[require.resolve('./commands/' + file)]
 
 		try{
-			kuro.modules[name] = require('./commands/' + file)
-			if(kuro.modules[name].hasOwnProperty('init'))
-				kuro.modules[name].init(kuro)
+			ghost.modules[name] = require('./commands/' + file)
+			if(ghost.modules[name].hasOwnProperty('init'))
+				ghost.modules[name].init(ghost)
 
-			kuro.log(`Module ${name} is ready`)
+			ghost.log(`Module ${name} is ready`)
 		}catch(e){
-			kuro.error(`Error in module ${name}:\n${e.stack}`)
+			ghost.error(`Error in module ${name}:\n${e.stack}`)
 		}
 		
 	})
 
 }
 
-kuro.edit = function(msg, content, timeout = 3000){
+ghost.edit = function(msg, content, timeout = 3000){
 	if(timeout === 0) return msg.edit(content).catch(console.error)
 
 	msg.edit(content).then(() => {
@@ -93,18 +93,18 @@ kuro.edit = function(msg, content, timeout = 3000){
 	})
 }
 
-kuro.log = function(msg, color){
-	if(color === undefined) console.log('[Kuro]: ' + msg)
-	else console.log(chalk[color]('[Kuro]: ' + msg))
+ghost.log = function(msg, color){
+	if(color === undefined) console.log('[ghost]: ' + msg)
+	else console.log(chalk[color]('[ghost]: ' + msg))
 }
 
-kuro.error = function(msg){
-	console.log(chalk.red('[Kuro]: ' + msg))
+ghost.error = function(msg){
+	console.log(chalk.red('[ghost]: ' + msg))
 }
 
-kuro.log('Starting...', 'green')
-kuro.login(config.token)
+ghost.log('Starting...', 'green')
+ghost.login(config.token)
 
 process.on('unhandledRejection', err => {
-	kuro.error(`Uncaught Promise Error:\n${err.stack}`)
+	ghost.error(`Uncaught Promise Error:\n${err.stack}`)
 })

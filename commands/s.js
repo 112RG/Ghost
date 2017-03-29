@@ -1,4 +1,4 @@
-let kuro
+let ghost
 let _msg
 let _stickers = {}
 let _table = 'stickers'
@@ -6,7 +6,7 @@ let assets = './files/stickers'
 let fs
 
 exports.init = function(bot){ 
-	kuro = bot
+	ghost = bot
 	fs = require('fs')
 
 	// Create sticker folder if it doesn't exist
@@ -25,7 +25,7 @@ exports.init = function(bot){
 				_stickers[row.name] = row.file
 		})
 
-	}).catch(function(error) { kuro.error(error) })
+	}).catch(function(error) { ghost.error(error) })
 }
 
 exports.run = function(msg, args) {
@@ -70,7 +70,7 @@ exports.sendSticker = function(name){
 
 exports.add = function(args){
 	if(args[0] === undefined){
-		kuro.edit(_msg, 'No name provided.')
+		ghost.edit(_msg, 'No name provided.')
 		return
 	}
 
@@ -78,7 +78,7 @@ exports.add = function(args){
 
 	// Is the name of the sticker already used?
 	if(_stickers.hasOwnProperty(name)){
-		kuro.edit(_msg, 'Name already in use.')
+		ghost.edit(_msg, 'Name already in use.')
 		return
 	}
 
@@ -98,7 +98,7 @@ exports.add = function(args){
 
 	if(url === ''){
 		// Welp, couldn't figure out a url
-		kuro.edit(_msg, 'You didnt supply either a url nor attachment, or there was an error with the attachment.')
+		ghost.edit(_msg, 'You didnt supply either a url nor attachment, or there was an error with the attachment.')
 		return
 	}
 
@@ -110,7 +110,7 @@ exports.add = function(args){
 		ext = re.exec(discordFilename)[1]
 
 	if(ext === undefined){
-		kuro.edit(_msg, 'The file you are linking or trying to attach doesn\'t have an extension. Kuro needs that thingy. pls fam')
+		ghost.edit(_msg, 'The file you are linking or trying to attach doesn\'t have an extension. ghost needs that thingy. pls fam')
 		return
 	}
 
@@ -119,39 +119,39 @@ exports.add = function(args){
 }
 
 exports.del = function(args){
-	if(args[0] === undefined) return kuro.edit(_msg, 'No name provided.')
+	if(args[0] === undefined) return ghost.edit(_msg, 'No name provided.')
 	
 	if(args[0] in _stickers){
-		kuro.db.table(_table).where('name', args[0]).del().then(function(){
+		ghost.db.table(_table).where('name', args[0]).del().then(function(){
 			delete(_stickers[args[0]])
-			return kuro.edit(_msg, 'The sticker was removed.', 1000)
-		}).catch(function(e){ kuro.edit(_msg, 'Error: \n' + e, 0)})
+			return ghost.edit(_msg, 'The sticker was removed.', 1000)
+		}).catch(function(e){ ghost.edit(_msg, 'Error: \n' + e, 0)})
 	}else{
-		return kuro.edit(_msg, 'There is no sticker by that name.')
+		return ghost.edit(_msg, 'There is no sticker by that name.')
 	}
 }
 
 exports.ren = function(args){
-	if(args[0] === undefined) return kuro.edit(_msg, 'No source sticker supplied.')
-	if(args[1] === undefined) return kuro.edit(_msg, 'No destination sticker supplied.')
+	if(args[0] === undefined) return ghost.edit(_msg, 'No source sticker supplied.')
+	if(args[1] === undefined) return ghost.edit(_msg, 'No destination sticker supplied.')
 	
 	if(args[0] in _stickers){
 		
-		kuro.db.table(_table).where('name', args[0]).update({
+		ghost.db.table(_table).where('name', args[0]).update({
 			name: args[1]
 		}).then(function(){
 			_stickers[args[1]] = _stickers[args[0]]
 			delete(_stickers[args[0]])
-			return kuro.edit(_msg, 'Sticker renamed.', 1000)
-		}).catch(function(e){ kuro.edit(_msg, 'Error: \n' + e, 0)})
+			return ghost.edit(_msg, 'Sticker renamed.', 1000)
+		}).catch(function(e){ ghost.edit(_msg, 'Error: \n' + e, 0)})
 
 	}else{
-		return kuro.edit(_msg, 'There is no sticker by that name.')
+		return ghost.edit(_msg, 'There is no sticker by that name.')
 	}
 }
 
 exports.list = function(){
-	if(kuro.config.server.enabled === true)
+	if(ghost.config.server.enabled === true)
 		this.startServer()
 	else{
 		let list = ''
@@ -160,7 +160,7 @@ exports.list = function(){
 				list = list + sticker + ', '
 
 		list = list.substr(0, list.length - 2)
-		return kuro.edit(_msg, `**__Stickers list__**\n\`\`\`\n${list}\n\`\`\``, 10000)
+		return ghost.edit(_msg, `**__Stickers list__**\n\`\`\`\n${list}\n\`\`\``, 10000)
 	}
 }
 
@@ -168,19 +168,19 @@ exports.downloadImage = function(name, url, dest, ext) {
 	let saveFile = require('request')
 		.get(url)
 		.on('error', (err) => {
-			kuro.log(err)
+			ghost.log(err)
 			_msg.edit('***Error:*** ' + err)
 		})
 		.pipe(fs.createWriteStream(dest))
 
 	saveFile.on('finish', () => { 
-		kuro.db.table(_table).insert({
+		ghost.db.table(_table).insert({
 			name: name,
 			file: name + '.' + ext
 		}).then(function(){
 			_stickers[name] = name + '.' + ext
-			kuro.edit(_msg, 'Sticker added', 1000)
-		}).catch(function(e){ kuro.edit(_msg, 'Error: \n' + e, 0)})
+			ghost.edit(_msg, 'Sticker added', 1000)
+		}).catch(function(e){ ghost.edit(_msg, 'Error: \n' + e, 0)})
 	})
 }
 
@@ -192,7 +192,7 @@ exports.migrate = function(){
 
 		const fs = require('fs')
 
-		if(!fs.existsSync(oldfolder)) return kuro.edit(_msg, 'There doesn\'t seem to be an old sticker folder')
+		if(!fs.existsSync(oldfolder)) return ghost.edit(_msg, 'There doesn\'t seem to be an old sticker folder')
 
 		fs.readdir(oldfolder, (err, files) => {
 			files.forEach(file => {
@@ -205,13 +205,13 @@ exports.migrate = function(){
 
 					copyFile(oldfolder + '/' + file, newfolder + '/' + file)
 
-					kuro.db.table(_table).insert({
+					ghost.db.table(_table).insert({
 						name: name,
 						file: file
 					}).then(function(){
 						_stickers[name] = file
-						kuro.log('Migrated ' + file)
-					}).catch((e) => kuro.error(e))	
+						ghost.log('Migrated ' + file)
+					}).catch((e) => ghost.error(e))	
 				}
 
 			})
@@ -220,7 +220,7 @@ exports.migrate = function(){
 		_msg.edit('Migration finished. Check console for logs.')
 
 	}catch(e){
-		kuro.error(e)
+		ghost.error(e)
 	}
 }
 
@@ -248,7 +248,7 @@ function copyFile(source, target) {
 
 	function done(err) {
 		if (!cbCalled) {
-			if(err) kuro.error(err)
+			if(err) ghost.error(err)
 			cbCalled = true
 		}
 	}

@@ -23,7 +23,7 @@ module.exports = {
 		*/
 	},
 
-	// Border color for embeds, defaults to Kuro one
+	// Border color for embeds, defaults to ghost one
 	embedColor: 15473237,
 	
 	// Still in development, don't touch

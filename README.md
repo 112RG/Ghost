@@ -1,15 +1,15 @@
-![Kuro Bot](http://i.imgur.com/ohS1PwH.png)   
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/kanadeko/Kuro/master/LICENSE)
-[![Code Climate](https://codeclimate.com/github/kanadeko/Kuro/badges/gpa.svg)](https://codeclimate.com/github/kanadeko/Kuro)
-[![Issue Count](https://codeclimate.com/github/kanadeko/Kuro/badges/issue_count.svg)](https://codeclimate.com/github/kanadeko/Kuro)
+![ghost Bot](http://i.imgur.com/ohS1PwH.png)   
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/kanadeko/ghost/master/LICENSE)
+[![Code Climate](https://codeclimate.com/github/kanadeko/ghost/badges/gpa.svg)](https://codeclimate.com/github/kanadeko/ghost)
+[![Issue Count](https://codeclimate.com/github/kanadeko/ghost/badges/issue_count.svg)](https://codeclimate.com/github/kanadeko/ghost)
 
-Kuro is an easy to use self bot that is shifting more and more into a framework while preserving its ease of use. It sits on top of [discord.js](https://github.com/hydrabolt/discord.js/). NodeJS version 6+ is ***REQUIRED*** [Installing Node.js](https://nodejs.org/en/download/package-manager/)
+ghost is an easy to use self bot that is shifting more and more into a framework while preserving its ease of use. It sits on top of [discord.js](https://github.com/hydrabolt/discord.js/). NodeJS version 6+ is ***REQUIRED*** [Installing Node.js](https://nodejs.org/en/download/package-manager/)
 
 [> Check this video to see how it works!](https://my.mixtape.moe/pwcrem.webm)
 
 ## Version 4.0 is out!
 ### What's new:
-1. Rewrote pretty much everything since Kuro is shifting into a framework.
+1. Rewrote pretty much everything since ghost is shifting into a framework.
 2. Each command has it's own file now, meaning you can add commands to your bot by simply dropping a .js file into the ./commands/ folder.
 3. Removed json files for configuration and value storing. Everything is handled by [knex](https://knexjs.org) and sqlite now.
 4. Added a new configuration setting to redirect unknown commands to a specific module. Check `config.js` for further instructions and sample.
@@ -25,11 +25,11 @@ Kuro is an easy to use self bot that is shifting more and more into a framework 
 4. `npm install`
 
 #### Clean install:
-1. Clone the repo with `git clone https://github.com/kanadeko/Kuro`
+1. Clone the repo with `git clone https://github.com/kanadeko/ghost`
 2. Run `npm install`
 3. Copy config.sample.js to config.js and fill the required data.
 4. To get your personal token, bring up the Developer Tools on the discord website and type `localStorage.token`. That should print your personal token to use with this bot.
-5. Run the bot with `node kuro.js`
+5. Run the bot with `node ghost.js`
 
 ---
 
@@ -60,7 +60,7 @@ let config = {
     */
   },
 
-  // Border color for embeds, defaults to Kuro one
+  // Border color for embeds, defaults to ghost one
   embedColor: 15473237
 }
 ```
@@ -124,7 +124,7 @@ Each module has detailed instructions inside their own files. Take a look at the
   Grabs the supplied amount of messages from chat and deletes those that are yours.
 
 - `reboot`  
-  Reboots the Kuro. (Only works if using pm2|forever).
+  Reboots the ghost. (Only works if using pm2|forever).
 
 - `reload`  
   Reloads all the modules (Useful when developing).
@@ -136,7 +136,7 @@ Each module has detailed instructions inside their own files. Take a look at the
   Sends a message using regional character emojis.
 
 - `s [name] | [add|del|ren]`  
-  A module to manage stickers like Telegram does. Upload a sticker with a given name, and then make kuro paste it when you trigger the command.
+  A module to manage stickers like Telegram does. Upload a sticker with a given name, and then make ghost paste it when you trigger the command.
 
 - `smug`  
   Displays smug looking anime girls with patronizing looks on their faces.
@@ -145,10 +145,10 @@ Each module has detailed instructions inside their own files. Take a look at the
   Displays an embed with statistics.
 
 - `status [online|idle|dnd|offline]`  
-  The status you want to appear as whenever you're offline, since using Kuro will make discord think you're always online.
+  The status you want to appear as whenever you're offline, since using ghost will make discord think you're always online.
 
 - `tag [name] | [add|del|ren]`  
-  Saves the given text into a tag for later usage. For example `tag add kuro https://github.com/kanadeko/Kuro` would print `https://github.com/kanadeko/Kuro` every time I do `tag kuro`
+  Saves the given text into a tag for later usage. For example `tag add ghost https://github.com/kanadeko/ghost` would print `https://github.com/kanadeko/ghost` every time I do `tag ghost`
 
 - `tl`  
   Tries to translate the last message to english. 

@@ -1,5 +1,5 @@
-let kuro
-exports.init = function(bot){ kuro = bot }
+let ghost
+exports.init = function(bot){ ghost = bot }
 
 exports.run = function(msg, args) {
 
@@ -12,7 +12,7 @@ exports.run = function(msg, args) {
 		msg.channel.sendCode('xl', clean(evaled))
 	}catch(err) {
 		msg.channel.sendMessage('`ERROR` ```xl\n' + clean(err) + '\n```')
-		kuro.error(clean(err))
+		ghost.error(clean(err))
 	}
 
 }

@@ -1,6 +1,6 @@
-let kuro
-exports.init = function(bot){ kuro = bot }
+let ghost
+exports.init = function(bot){ ghost = bot }
 exports.run = function(msg, args) {
     msg.delete()
-	kuro.loadCommands()
+	ghost.loadCommands()
 }

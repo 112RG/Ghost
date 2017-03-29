@@ -1,7 +1,7 @@
-let kuro
+let ghost
 let os = require('os');
 let disk = require('diskusage');
-exports.init = function(bot){ kuro = bot }
+exports.init = function(bot){ ghost = bot }
 
 exports.run = function(msg, args) {
         let disk_free = 0;
@@ -18,7 +18,7 @@ exports.run = function(msg, args) {
         msg.edit('', {
                 'embed': {
                         'title': 'Stats',
-                        'description': `Kuro uptime: ${secondsToString(process.uptime())}`,
+                        'description': `ghost uptime: ${secondsToString(process.uptime())}`,
                         'fields': [
                                 {'name': 'Memory heapUsed', 'value': `${sizeOf(process.memoryUsage().heapUsed)} / ${sizeOf(os.totalmem())}`, 'inline': true},
                                 {'name': 'Memory heapTotal', 'value': `${sizeOf(process.memoryUsage().heapTotal)} / ${sizeOf(os.totalmem())}`, 'inline': true},
@@ -28,7 +28,7 @@ exports.run = function(msg, args) {
                                 {'name': 'System Load', 'value': `${os.loadavg()[0].toFixedDown(2)}%`, 'inline': true},
                                 {'name': 'Server Uptime', 'value': `${secondsToString(os.uptime())}`},
                         ],
-                        'color': kuro.config.embedColor
+                        'color': ghost.config.embedColor
                 }
         })
 }

@@ -1,5 +1,5 @@
-let kuro
-exports.init = function(bot){ kuro = bot }
+let ghost
+exports.init = function(bot){ ghost = bot }
 
 exports.run = function(msg, args) {
 	msg.channel.fetchMessages({limit: 2})
@@ -8,9 +8,9 @@ exports.run = function(msg, args) {
 			require('google-translate-api')(messages[1].content, {to: 'en'}).then(res => {
 				msg.edit(`Translated from \`${res.from.language.iso}\` | ${res.text}`)
 			}).catch(err => {
-				kuro.log(err)
+				ghost.log(err)
 				msg.delete()
 			})
 		})
-		.catch(e => kuro.error(e))
+		.catch(e => ghost.error(e))
 }

@@ -1,5 +1,5 @@
-let kuro
-exports.init = function(bot){ kuro = bot }
+let ghost
+exports.init = function(bot){ ghost = bot }
 
 exports.run = function(msg, args) {
 	
@@ -7,18 +7,18 @@ exports.run = function(msg, args) {
 	
 	let version = 'v' + pjson.version.toString()
 	let uptime = secondsToString(process.uptime()).toString()
-	let modules = Object.keys(kuro.modules).length.toString() //0 // kuro.utils.moduleCount.toString()
+	let modules = Object.keys(ghost.modules).length.toString() //0 // ghost.utils.moduleCount.toString()
 	let memory = `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`
 
 	// Showing the amount of stickers to demonstrate accessing other module's information
-	let stickers = kuro.modules.s.stickerCount().toString()
-	let tags = kuro.modules.tag.tagsCount().toString()
+	let stickers = ghost.modules.s.stickerCount().toString()
+	let tags = ghost.modules.tag.tagsCount().toString()
 
 	msg.edit('', {
 		'embed': {
 			'type': 'rich',
-			'description': '[Kurobot Stats](https://github.com/kanadeko/Kuro)',
-			'color': kuro.config.embedColor,
+			'description': '[ghostbot Stats](https://github.com/kanadeko/ghost)',
+			'color': ghost.config.embedColor,
 			'fields': [
 				{ 'name': '❯ Version', 'value': version, 'inline': true },
 				{ 'name': '❯ Ram usage', 'value': memory, 'inline': true },
