@@ -57,8 +57,16 @@ ghost.on('message', function(msg){
 
 })
 
+<<<<<<< HEAD
 ghost.on('disconnect', () => { ghost.error('CLIENT: Disconnected!') })
 ghost.on('reconnect', () => { ghost.log('CLIENT: Reconnecting...', 'green') })
+=======
+kuro.on('disconnect', () => { 
+	kuro.error('CLIENT: Disconnected!');
+	process.exit();
+})
+kuro.on('reconnecting', () => { kuro.log('CLIENT: Reconnecting...', 'green') })
+>>>>>>> kanadeko/master
 
 ghost.loadCommands = function(){
 	
@@ -105,5 +113,10 @@ ghost.log('Starting...', 'green')
 ghost.login(config.token)
 
 process.on('unhandledRejection', err => {
+<<<<<<< HEAD
 	ghost.error(`Uncaught Promise Error:\n${err.stack}`)
 })
+=======
+	kuro.error(`Uncaught Promise Error:\n${err.stack}`)
+})
+>>>>>>> kanadeko/master
