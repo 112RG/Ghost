@@ -26,7 +26,6 @@ ghost.once('ready', () => {
 	ghost.loadCommands()
 
 	ghost.log('ghost is ready!', 'green')
-	ghost.user.setStatus(dnd)
 })
 
 ghost.on('message', function(msg){
