@@ -1,15 +1,8 @@
 let ghost
 let os = require('os');
-let disk = require('diskusage');
 exports.init = function(bot){ ghost = bot }
 
 exports.run = function(msg, args) {
-        let disk_free = 0;
-        let disk_total = 0;
-        disk.check('/', function(err, info) {
-                disk_free = info.free;
-                disk_total = info.total;
-        });
         let cpus = os.cpus()
         let thread_count = 0;
         for (let i = 0; i < cpus.length; i++){
@@ -23,8 +16,6 @@ exports.run = function(msg, args) {
                                 {'name': 'Memory heapUsed', 'value': `${sizeOf(process.memoryUsage().heapUsed)} / ${sizeOf(os.totalmem())}`, 'inline': true},
                                 {'name': 'Memory heapTotal', 'value': `${sizeOf(process.memoryUsage().heapTotal)} / ${sizeOf(os.totalmem())}`, 'inline': true},
                                 {'name': 'Total Memory Used', 'value': `${sizeOf(os.totalmem()-os.freemem())} / ${sizeOf(os.totalmem())}`, 'inline':true},
-                                {'name': 'Free Disk', 'value': `${sizeOf(disk_free)}`, 'inline': true},
-                                {'name': 'Total Disk', 'value': `${sizeOf(disk_total)}`, 'inline':true},
                                 {'name': 'System Load', 'value': `${os.loadavg()[0].toFixedDown(2)}%`, 'inline': true},
                                 {'name': 'Server Uptime', 'value': `${secondsToString(os.uptime())}`},
                         ],
