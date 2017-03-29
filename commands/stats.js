@@ -17,7 +17,7 @@ exports.run = function(msg, args) {
 	msg.edit('', {
 		'embed': {
 			'type': 'rich',
-			'description': '[Ghost Stats](https://github.com/112madgamer/Ghost) Fork of (https://github.com/kanadeko/kuro)',
+			'description': '[Ghost Stats](https://github.com/112madgamer/Ghost) Fork of [Kuro bot](https://github.com/kanadeko/kuro)',
 			'color': ghost.config.embedColor,
 			'fields': [
 				{ 'name': '❯ Version', 'value': version, 'inline': true },
@@ -27,7 +27,7 @@ exports.run = function(msg, args) {
 				{ 'name': '❯ Tags', 'value': tags, 'inline': true }
 			],
 			'thumbnail': {
-				'url': 'https://i.imgur.com/sVVcwJd.png'
+				'url': 'https://i.imgur.com/tDeRnmd.png'
 			},
 			'footer':{
 				'text': 'Uptime: ' + uptime
