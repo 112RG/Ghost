@@ -11,9 +11,10 @@ fs.existsSync(filesDirectory) || fs.mkdirSync(filesDirectory)
 // Initializing the ultimate tan
 const ghost = new Discord.Client()
 
+
 // When ready
 ghost.once('ready', () => {
-
+	
 	// Create database if it doesn't exist
 	fs.exists('db', (exists) => exists || fs.writeFile('db', ''))
 
@@ -24,8 +25,9 @@ ghost.once('ready', () => {
 	ghost.config = config
 
 	ghost.loadCommands()
-
 	ghost.log('ghost is ready!', 'green')
+	ghost.log(`Logged in as ${ghost.user.username}!`);
+	
 })
 
 ghost.on('message', function(msg){
