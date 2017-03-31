@@ -3,6 +3,7 @@ const Discord = require('discord.js')
 const knex = require('knex')(config.database)
 const chalk = require('chalk')
 const fs = require('fs')
+var moment = require('moment');
 
 
 let filesDirectory = __dirname + '/files'
@@ -10,8 +11,7 @@ fs.existsSync(filesDirectory) || fs.mkdirSync(filesDirectory)
 
 // Initializing the ultimate tan
 const ghost = new Discord.Client()
-
-
+moment().format();
 // When ready
 ghost.once('ready', () => {
 	
@@ -101,12 +101,13 @@ ghost.edit = function(msg, content, timeout = 3000){
 }
 
 ghost.log = function(msg, color){
-	if(color === undefined) console.log('[ghost]: ' + msg)
-	else console.log(chalk[color]('[ghost]: ' + msg))
+	
+	if(color === undefined) console.log(moment().format('h:mm:ss') + '[ghost]: ' + msg)
+	else console.log(chalk[color](moment().format('h:mm:ss') + '[ghost]: ' + msg))
 }
 
 ghost.error = function(msg){
-	console.log(chalk.red('[ghost]: ' + msg))
+	console.log(chalk.red(moment().format('h:mm:ss') + '[ghost]: ' + msg))
 }
 
 ghost.log('Starting...', 'green')

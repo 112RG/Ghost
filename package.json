@@ -23,6 +23,7 @@
     "erlpack": "github:hammerandchisel/erlpack#master",
     "google-translate-api": "^2.2.2",
     "knex": "^0.12.6",
+    "moment": "^2.18.1",
     "node-opus": "^0.2.4",
     "opusscript": "0.0.3",
     "request": "^2.74.0",
