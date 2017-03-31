@@ -61,7 +61,7 @@ ghost.on('message', function(msg){
 
 
 ghost.on('disconnect', () => { 
-	kuro.error('CLIENT: Disconnected!');
+	ghost.error('CLIENT: Disconnected!');
 	process.exit();
 })
 
