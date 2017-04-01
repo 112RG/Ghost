@@ -115,7 +115,7 @@ ghost.error = function(msg){
 }
 
 ghost.log('Starting...', 'green')
-ghost.login(process.env.TOKEN)
+ghost.login(config.token)
 
 process.on('unhandledRejection', err => {
 	ghost.error(`Uncaught Promise Error:\n${err.stack}`)
