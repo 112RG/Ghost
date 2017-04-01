@@ -2,14 +2,16 @@
   "name": "ghost",
   "version": "4.0.1",
   "description": "Self bot with utilities",
-  "author": "kanadeko",
+  "author": "112madGamer",
   "main": "ghost.js",
+  "scripts": {
+    "start": "node ./bot.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kanadeko/ghost"
   },
   "bugs": {
-    "url": "https://github.com/kanadeko/ghost/issues"
   },
   "engines": {
     "node": ">=6.0.0"

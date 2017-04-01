@@ -10,7 +10,9 @@ let filesDirectory = __dirname + '/files'
 fs.existsSync(filesDirectory) || fs.mkdirSync(filesDirectory)
 
 // Initializing the ultimate tan
+
 const ghost = new Discord.Client()
+
 moment().format();
 // When ready
 ghost.once('ready', () => {
@@ -25,13 +27,14 @@ ghost.once('ready', () => {
 	ghost.config = config
 
 	ghost.loadCommands()
+
 	ghost.log('ghost is ready!', 'green')
 	ghost.log(`Logged in as ${ghost.user.username}!`);
+	
 	
 })
 
 ghost.on('message', function(msg){
-
 	// Ignore if the message is not ours
 	if (msg.author.id !== ghost.user.id) return
 
@@ -56,6 +59,7 @@ ghost.on('message', function(msg){
 		return ghost.modules[config.commandError.module][config.commandError.function](msg, cmd)
 
 	return msg.delete()
+	
 
 })
 
@@ -111,7 +115,7 @@ ghost.error = function(msg){
 }
 
 ghost.log('Starting...', 'green')
-ghost.login(config.token)
+ghost.login(process.env.TOKEN)
 
 process.on('unhandledRejection', err => {
 	ghost.error(`Uncaught Promise Error:\n${err.stack}`)
