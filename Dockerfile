@@ -13,4 +13,4 @@ ENV TOKEN=token
 COPY . /usr/src/app
 
 
-CMD ["node", "./bot.js"]
+CMD ["node", "./Ghost[PB].js"]
