@@ -4,10 +4,10 @@ files/
 stickers/
 .eslintrc.json
 config.js
+config.json
 db
 
 # Commands people shouldn't have :araragi:
-commands/user.js
 commands/radio.js
 
 .vscode/settings.json
@@ -15,3 +15,7 @@ commands/radio.js
 npm-debug.log
 
 .vscode/launch.json
+
+.eslintrc
+
+config.sample.js
