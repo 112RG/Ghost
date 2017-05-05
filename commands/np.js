@@ -1,13 +1,13 @@
 const WebSocket = require('ws');
 
-let kuro
+let ghost
 let radioInfo
 let ws
 
 const Discord = require('discord.js')
 
 exports.init = function(bot) {
-	kuro = bot
+	ghost = bot
 	this.connectWS()
 }
 
@@ -39,7 +39,7 @@ exports.run = function(msg) {
 	msg.edit('', {
 		embed: {
 			type: 'rich',
-			color: kuro.config.embedColor,
+			color: ghost.config.embedColor,
 			fields: [
 				{ name: 'Now playing', value: song }
 			]

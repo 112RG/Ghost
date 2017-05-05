@@ -1,5 +1,5 @@
-let kuro
-exports.init = function(bot) { kuro = bot }
+let ghost
+exports.init = function(bot) { ghost = bot }
 
 exports.run = function(msg, args) {
 	msg.delete()
@@ -8,7 +8,7 @@ exports.run = function(msg, args) {
 			type: 'rich',
 			title: 'Google Search',
 			description: '[' + args.toString().replace(/,/g, ' ') + '](https://www.google.com/search?hl=en_US&q=' + args.toString().replace(/,/g, '+') + ')',
-			color: kuro.config.embedColor
+			color: ghost.config.embedColor
 		}
 	})
 }

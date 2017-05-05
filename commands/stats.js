@@ -17,7 +17,7 @@ exports.run = function(msg, args) {
 	msg.edit('', {
 		'embed': {
 			'type': 'rich',
-			'description': '[Ghost Stats](https://github.com/112madgamer/Ghost) Fork of [Kuro bot](https://github.com/kanadeko/kuro)',
+			'description': '[Ghost Stats](https://github.com/112madgamer/Ghost) Fork of [ghost bot](https://github.com/kanadeko/ghost)',
 			'color': ghost.config.embedColor,
 			'fields': [
 				{ 'name': '❯ Version', 'value': version, 'inline': true },

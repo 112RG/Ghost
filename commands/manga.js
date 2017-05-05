@@ -1,8 +1,8 @@
 const Kitsu = require('kitsu.js')
 const kitsu = new Kitsu()
-let kuro
+let ghost
 
-exports.init = function(bot) { kuro = bot }
+exports.init = function(bot) { ghost = bot }
 
 exports.run = function(msg, args) {
 	let search = args.toString().replace(/,/g, ' ')
@@ -29,7 +29,7 @@ function prepareEmbed(msg, item) {
 			title: titles.enJp,
 			url,
 			description: `**Synopsis:**\n${synopsis.substring(0, 450)}...`,
-			color: kuro.config.embedColor,
+			color: ghost.config.embedColor,
 			fields: [
 				{
 					name: '❯ Type',
