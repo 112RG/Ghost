@@ -10,3 +10,5 @@ commands/user.js
 commands/radio.js
 
 .vscode/settings.json
+
+.vscode/launch.json
